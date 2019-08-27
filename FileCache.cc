@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <memory>
 
 #include <algorithm>
 
@@ -147,7 +148,7 @@ FileStructure* FileCache::update(const std::string& aDirectory, const std::strin
 		return iti->second;
 	}
 	
-	auto_ptr<MappedFile> mfile(new MappedFile);
+	std::auto_ptr<MappedFile> mfile(new MappedFile);
 	
 	if (DebugMode)
 		std::cout << "[DEBUG] FileCache::update(" << aDirectory << "," << aFilename << ","

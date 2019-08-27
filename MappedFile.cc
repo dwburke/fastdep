@@ -11,6 +11,7 @@
 #endif
 
 #include <memory>
+#include <sys/stat.h>
 
 #include "MappedFile.h"
 

@@ -21,7 +21,7 @@ SOURCES=$(addsuffix .cc,$(CLASSES))
 OBJECTS=$(SOURCES:.cc=.o)
 OBJECTS+=$(BUILDSOURCES:.c=.o)
 
-CFLAGS+=-Wall $(foreach include,$(INCLUDEDIRS),-I $(include))
+CFLAGS+=-Wall -Wno-deprecated $(foreach include,$(INCLUDEDIRS),-I $(include))
 
 $(OBJECTS): config/config.me $(ALLMAKEFILES)
 
