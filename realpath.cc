@@ -55,7 +55,7 @@ char resolved_path[];
 {
 	strcpy(resolved_path,path);
 	return resolved_path;
-
+	exit(2);
 	// until fixed
 	char copy_path[PATH_MAX];
 	char link_path[PATH_MAX];
