@@ -8,7 +8,7 @@
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <memory>
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -22,6 +22,19 @@
 #ifdef WIN32
 extern char *realpath(const char *path, char resolved_path[]);
 #define PATH_MAX MAX_PATH
+#endif
+
+// this is not really a solution, but it is used in realpath.cc as well...
+#ifndef PATH_MAX
+#ifdef _POSIX_VERSION
+#define PATH_MAX _POSIX_PATH_MAX
+#else
+#ifdef MAXPATHLEN
+#define PATH_MAX MAXPATHLEN
+#else
+#define PATH_MAX 1024
+#endif
+#endif
 #endif
 
 using namespace std;
@@ -153,7 +166,7 @@ FileStructure* FileCache::update(const std::string& aDirectory, const std::strin
 	if (DebugMode)
 		std::cout << "[DEBUG] FileCache::update(" << aDirectory << "," << aFilename << ","
 			<< isSystem << ");" << std::endl;
-	char ResolvedBuffer[PATH_MAX+1];
+	char ResolvedBuffer[PATH_MAX];
 	{
 		unsigned int i;
 		for (i=0; i<IncludeDirs.size(); ++i)

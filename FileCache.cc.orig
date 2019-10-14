@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <memory>
 
 #include <algorithm>
 
@@ -31,6 +32,7 @@ bool FileCache::QuietMode = false;
 FileCache::FileCache(const std::string& aBaseDir)
 : BaseDir(aBaseDir),
 	ObjectsDir(""),
+	ObjectsExt(".o"),
 	DebugMode(false),
 	WarnAboutNonExistingSystemHeaders(false)
 {
@@ -146,7 +148,7 @@ FileStructure* FileCache::update(const std::string& aDirectory, const std::strin
 		return iti->second;
 	}
 	
-	auto_ptr<MappedFile> mfile(new MappedFile);
+	std::unique_ptr<MappedFile> mfile(new MappedFile);
 	
 	if (DebugMode)
 		std::cout << "[DEBUG] FileCache::update(" << aDirectory << "," << aFilename << ","

@@ -7,12 +7,9 @@
 #include <sys/mman.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <sys/stat.h>
-#include <sys/types.h>
 
 #endif
 
-#include <cstdio>
 #include <memory>
 #include <sys/stat.h>
 
@@ -100,12 +97,8 @@ char* MappedFile::map() throw (std::string)
 		
 MappedFile::~MappedFile()
 {
-	if(opened_)
-	{
-		if (map_)
-			munmap(map_, mapsize);
-		close(fd);
-	}
+	munmap(map_, mapsize);
+	close(fd);		
 }
 
 				

@@ -39,7 +39,7 @@ public:
 	/** C'tor
 	 *
 	 */
-	MappedFile() : opened_(false),file_size(0){}
+	MappedFile() : opened_(false),file_size(0),map_(0){}
 	
 	/** D'tor
 	 *

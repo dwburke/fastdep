@@ -5,7 +5,7 @@ runonetest()
 	echo "Testing " $1
 	rm -f last/$1.out
 	../fastdep $1 > last/$1.out
-	diff -u good/$1.out last/$1.out
+	diff -u good/$1.out last/$1.out || exit 1
 }
 
 runonescript()
@@ -22,6 +22,6 @@ for i in *.cc; do
 	runonetest $i
 done
 
-for i in *.script; do
-	runonescript $i
-done
+#for i in *.script; do
+#	runonescript $i
+#done
