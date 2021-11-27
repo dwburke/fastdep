@@ -64,7 +64,7 @@ public:
 	/** Maps the file into memory
 	 *
 	 */
-	char* map() throw (std::string) ;
+	char* map();
 };
 
 #endif // __MAPPEDFILE_H__

@@ -87,7 +87,7 @@ bool MappedFile::open(const std::string& name)
 	return opened_;
 }
 
-char* MappedFile::map() throw (std::string)
+char* MappedFile::map()
 {	
 	hFileMapping = CreateFileMapping(
 					hFile,NULL,
@@ -124,7 +124,7 @@ bool MappedFile::open(const std::string& name)
 	return opened_;
 }
 
-char* MappedFile::map() throw (std::string)
+char* MappedFile::map()
 {
 	int pagesizem1 = getpagesize()-1;
 
