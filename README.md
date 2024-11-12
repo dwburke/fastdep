@@ -6,3 +6,9 @@ well maintain my own version on github since the original author appears
 to have abandoned it.  If I'm wrong about this, my humble apologies to
 the author.
 
+## Example
+
+```shell
+fastdep *.cpp >.depend
+```
+
